@@ -108,7 +108,6 @@ export function Ouverture() {
       <div className="ouverture-bas" aria-hidden="true">
         <div className="ouverture-bloc ouverture-bloc-bas">
           {nom ? <p className="ouverture-adou font-serif">{nom}</p> : null}
-          <p className="ouverture-role">{profil.lieu}</p>
         </div>
       </div>
       <button type="button" className="ouverture-passer" onClick={() => passer.current()}>

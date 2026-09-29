@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Fraunces, Manrope } from "next/font/google";
+import { Inter, Source_Serif_4 } from "next/font/google";
 import { BoutonRemonter } from "@/components/bouton-remonter";
 import { Entete } from "@/components/entete";
 import { FiletLecture } from "@/components/filet-lecture";
@@ -8,18 +8,16 @@ import { Pied } from "@/components/pied";
 import { profil } from "@/lib/contenu";
 import "./globals.css";
 
-const serif = Fraunces({
+const serif = Source_Serif_4({
   subsets: ["latin"],
-  weight: ["500", "600", "700"],
   style: ["normal", "italic"],
-  variable: "--font-fraunces",
+  variable: "--font-source-serif",
   display: "swap",
 });
 
-const sans = Manrope({
+const sans = Inter({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-manrope",
+  variable: "--font-inter",
   display: "swap",
 });
 
@@ -29,11 +27,11 @@ export const metadata: Metadata = {
     template: `%s — ${profil.nom}`,
   },
   description:
-    "Marc Adou, marketing digital à Abidjan. Parcours, missions et contact.",
+    `${profil.nom}, product designer UX/UI. Parcours, projets fintech et contact.`,
 };
 
 export const viewport = {
-  themeColor: "#f4f1eb",
+  themeColor: "#111113",
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover" as const,

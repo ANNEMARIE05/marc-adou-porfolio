@@ -6,7 +6,7 @@ import { IconeFleche } from "@/components/icones";
 import { profil } from "@/lib/contenu";
 
 const champ =
-  "mt-2 w-full border border-ligne bg-sable/45 px-4 py-3.5 text-base text-encre outline-none transition duration-300 placeholder:text-douce/55 focus:border-encre focus:bg-papier";
+  "mt-2 w-full border border-bronze/45 bg-sable px-4 py-3.5 text-base text-encre outline-none transition duration-300 placeholder:text-douce/70 focus:border-bronze focus:bg-papier";
 
 export function Formulaire() {
   const [statut, setStatut] = useState("");

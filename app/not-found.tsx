@@ -8,7 +8,7 @@ export default function NotFound() {
         Cette page n’existe pas.
       </h1>
       <p className="entrer mt-4 leading-7 text-douce" style={{ animationDelay: "160ms" }}>
-        Le portfolio tient sur l’accueil, les projets, le contact et le CV.
+        Le portfolio tient sur l’accueil, les projets, le parcours et le contact.
       </p>
       <div className="entrer mt-8" style={{ animationDelay: "230ms" }}>
         <Bouton href="/">Retour à l’accueil</Bouton>

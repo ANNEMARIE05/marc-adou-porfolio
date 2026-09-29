@@ -30,7 +30,7 @@ export function BoutonRemonter() {
       aria-label="Remonter en haut"
       aria-hidden={visible ? undefined : true}
       tabIndex={visible ? 0 : -1}
-      className={`no-print bouton-remonter fixed bottom-4 right-4 z-30 flex h-10 w-10 items-center justify-center bg-papier/90 text-encre ring-1 ring-inset ring-encre/25 backdrop-blur-md transition duration-300 hover:bg-encre hover:text-papier sm:bottom-6 sm:right-6 sm:h-11 sm:w-11 ${
+      className={`no-print bouton-remonter fixed bottom-4 right-4 z-30 flex h-10 w-10 items-center justify-center bg-sable/95 text-encre ring-1 ring-inset ring-bronze/50 backdrop-blur-md transition duration-300 hover:bg-bronze hover:text-papier sm:bottom-6 sm:right-6 sm:h-11 sm:w-11 ${
         visible
           ? "pointer-events-auto translate-y-0 opacity-100"
           : "pointer-events-none translate-y-2 opacity-0"

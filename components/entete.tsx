@@ -6,19 +6,22 @@ import { useEffect, useState } from "react";
 import { profil } from "@/lib/contenu";
 
 const liens = [
-  { href: "/#projets", label: "Projets", cle: "projets" },
-  { href: "/cv", label: "Parcours", cle: "cv" },
+  { href: "/", label: "Accueil", cle: "accueil" },
+  { href: "/projets", label: "Projets", cle: "projets" },
+  { href: "/parcours", label: "Parcours", cle: "parcours" },
+  { href: profil.cv, label: "CV", cle: "cv", externe: true },
   { href: "/contact", label: "Contact", cle: "contact" },
 ] as const;
 
 export function Entete() {
   const chemin = usePathname();
   const [ouvert, setOuvert] = useState(false);
-
   function actif(cle: (typeof liens)[number]["cle"]) {
+    if (cle === "accueil") return chemin === "/";
     if (cle === "projets") return chemin.startsWith("/projets");
-    if (cle === "cv") return chemin === "/cv";
-    return chemin === "/contact";
+    if (cle === "parcours") return chemin === "/parcours";
+    if (cle === "contact") return chemin === "/contact";
+    return false;
   }
 
   function fermer() {
@@ -47,7 +50,7 @@ export function Entete() {
     <header className="sticky top-0 z-40 border-b border-ligne/80 bg-papier/95 backdrop-blur-md">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-3 sm:px-6 sm:py-4">
         <Link href="/" onClick={fermer} className="flex min-w-0 flex-col leading-none sm:flex-row sm:items-baseline sm:gap-3">
-          <span className="font-serif text-[1.45rem] font-medium tracking-tight text-encre sm:text-[1.7rem]">
+          <span className="font-serif text-[1.02rem] font-medium leading-tight tracking-tight text-encre sm:text-[1.2rem]">
             {profil.nom}
           </span>
           <span className="mt-1 text-[0.62rem] uppercase tracking-[0.14em] text-douce sm:mt-0 sm:text-[0.68rem] sm:tracking-[0.16em]">
@@ -56,16 +59,28 @@ export function Entete() {
         </Link>
 
         <nav aria-label="Navigation" className="hidden items-center gap-x-6 md:flex">
-          {liens.map((lien) => (
-            <Link
-              key={lien.cle}
-              href={lien.href}
-              aria-current={actif(lien.cle) ? "page" : undefined}
-              className={classeLien}
-            >
-              {lien.label}
-            </Link>
-          ))}
+          {liens.map((lien) =>
+            "externe" in lien ? (
+              <a
+                key={lien.cle}
+                href={lien.href}
+                target="_blank"
+                rel="noreferrer"
+                className={classeLien}
+              >
+                {lien.label}
+              </a>
+            ) : (
+              <Link
+                key={lien.cle}
+                href={lien.href}
+                aria-current={actif(lien.cle) ? "page" : undefined}
+                className={classeLien}
+              >
+                {lien.label}
+              </Link>
+            ),
+          )}
           <a
             href={profil.linkedin}
             target="_blank"
@@ -115,14 +130,26 @@ export function Entete() {
             <ul>
               {liens.map((lien) => (
                 <li key={lien.cle} className="border-b border-ligne">
-                  <Link
-                    href={lien.href}
-                    aria-current={actif(lien.cle) ? "page" : undefined}
-                    onClick={fermer}
-                    className="flex items-baseline justify-between py-3 font-serif text-lg font-medium tracking-tight text-encre"
-                  >
-                    {lien.label}
-                  </Link>
+                  {"externe" in lien ? (
+                    <a
+                      href={lien.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      onClick={fermer}
+                      className="flex items-baseline justify-between py-3 font-serif text-lg font-medium tracking-tight text-encre"
+                    >
+                      {lien.label}
+                    </a>
+                  ) : (
+                    <Link
+                      href={lien.href}
+                      aria-current={actif(lien.cle) ? "page" : undefined}
+                      onClick={fermer}
+                      className="flex items-baseline justify-between py-3 font-serif text-lg font-medium tracking-tight text-encre"
+                    >
+                      {lien.label}
+                    </Link>
+                  )}
                 </li>
               ))}
               <li>

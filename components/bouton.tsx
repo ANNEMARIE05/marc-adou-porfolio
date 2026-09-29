@@ -10,11 +10,22 @@ type Proprietes = {
   href: string;
   children: React.ReactNode;
   variante?: Variante;
+  nouvelOnglet?: boolean;
 };
 
-export function Bouton({ href, children, variante = "plein" }: Proprietes) {
+export function Bouton({ href, children, variante = "plein", nouvelOnglet = false }: Proprietes) {
+  const classe = classeBouton(variante);
+
+  if (nouvelOnglet) {
+    return (
+      <a href={href} target="_blank" rel="noreferrer" className={classe}>
+        {children}
+      </a>
+    );
+  }
+
   return (
-    <Link href={href} className={classeBouton(variante)}>
+    <Link href={href} className={classe}>
       {children}
     </Link>
   );

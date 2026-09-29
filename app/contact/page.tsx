@@ -1,36 +1,34 @@
 import type { Metadata } from "next";
 import { Bouton } from "@/components/bouton";
-import { IconeFleche } from "@/components/icones";
+import { IconeDocument, IconeFleche } from "@/components/icones";
 import { profil } from "@/lib/contenu";
 import { Formulaire } from "./formulaire";
 
 export const metadata: Metadata = {
   title: "Contact",
-  description: "Écrire à Marc Adou, marketing digital. Adresse, LinkedIn et message.",
+  description: `Écrire à ${profil.nom}, product designer. Téléphone, e-mail, LinkedIn et message.`,
 };
 
 export default function Page() {
   return (
     <div className="lg:grid lg:min-h-[calc(100svh-4.75rem)] lg:grid-cols-2">
-      <section className="panneau-encre relative flex flex-col justify-between overflow-hidden bg-encre px-5 py-10 text-papier sm:px-12 sm:py-14 lg:py-16">
+      <section className="panneau-encre relative flex flex-col justify-between overflow-hidden border-bronze/30 bg-sable px-5 py-10 text-encre sm:px-12 sm:py-14 lg:border-r lg:py-16">
         <span className="filet-colonne" aria-hidden="true" />
         <div>
           <p
-            className="entrer text-[0.65rem] uppercase tracking-[0.16em] text-papier/60 sm:text-[0.72rem] sm:tracking-[0.22em]"
+            className="entrer text-[0.65rem] uppercase tracking-[0.16em] text-bronze sm:text-[0.72rem] sm:tracking-[0.22em]"
             style={{ animationDelay: "40ms" }}
           >
             {profil.role}
-            <span aria-hidden="true"> · </span>
-            {profil.lieu}
           </p>
           <h1
             className="entrer mt-3 font-serif text-[1.85rem] font-medium leading-[1.05] tracking-tight sm:mt-4 sm:text-6xl"
             style={{ animationDelay: "110ms" }}
           >
-            Écrire à Marc
+            Écrire
           </h1>
           <p
-            className="entrer mt-4 max-w-sm text-[0.95rem] leading-7 text-papier/75 sm:mt-6 sm:text-lg sm:leading-8"
+            className="entrer mt-4 max-w-sm text-[0.95rem] leading-7 text-douce sm:mt-6 sm:text-lg sm:leading-8"
             style={{ animationDelay: "180ms" }}
           >
             {profil.disponibilite}
@@ -47,19 +45,34 @@ export default function Page() {
             </a>
           </p>
           <p>
+            <a href={profil.telephoneLien} className="lien-nav text-sm tracking-wide text-encre">
+              {profil.telephone}
+            </a>
+          </p>
+          <p className="flex flex-wrap gap-x-5 gap-y-2">
             <a
               href={profil.linkedin}
               target="_blank"
               rel="noreferrer"
-              className="lien-nav inline-flex items-center gap-2 text-[0.72rem] uppercase tracking-[0.16em] text-papier/80"
+              className="lien-nav inline-flex items-center gap-2 text-[0.72rem] uppercase tracking-[0.16em] text-douce hover:text-encre"
             >
               LinkedIn
               <IconeFleche className="h-3.5 w-3.5" />
             </a>
+            <a
+              href={profil.behance}
+              target="_blank"
+              rel="noreferrer"
+              className="lien-nav inline-flex items-center gap-2 text-[0.72rem] uppercase tracking-[0.16em] text-douce hover:text-encre"
+            >
+              Behance
+              <IconeFleche className="h-3.5 w-3.5" />
+            </a>
           </p>
           <div className="pt-2">
-            <Bouton href="/cv" variante="clair">
-              Voir le parcours
+            <Bouton href={profil.cv} variante="clair" nouvelOnglet>
+              <IconeDocument />
+              Voir le CV
             </Bouton>
           </div>
         </div>
