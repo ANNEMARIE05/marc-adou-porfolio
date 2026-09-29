@@ -96,22 +96,22 @@ body {
 @keyframes surgir-haut {
   from {
     opacity: 0;
-    transform: translateY(58%);
+    transform: translate3d(0, 58%, 0);
   }
   to {
     opacity: 1;
-    transform: none;
+    transform: translate3d(0, 0, 0);
   }
 }
 
 @keyframes surgir-bas {
   from {
     opacity: 0;
-    transform: translateY(-58%);
+    transform: translate3d(0, -58%, 0);
   }
   to {
     opacity: 1;
-    transform: none;
+    transform: translate3d(0, 0, 0);
   }
 }
 
@@ -358,35 +358,37 @@ body {
 
 .ouverture-racine {
   position: fixed;
-  inset: 0;
+  top: 0;
+  left: 0;
   z-index: 80;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
   color: var(--papier);
   user-select: none;
 }
 
 .ouverture-haut,
 .ouverture-bas {
-  position: absolute;
-  right: 0;
-  left: 0;
-  height: calc(50% + 1px);
+  position: relative;
+  display: flex;
+  flex: 1 1 0;
+  min-height: 0;
+  justify-content: center;
   overflow: hidden;
   background: var(--encre);
   transition: transform 1.05s cubic-bezier(0.76, 0, 0.18, 1);
 }
 
 .ouverture-haut {
-  top: 0;
-  display: flex;
   align-items: flex-end;
-  justify-content: center;
+  margin-bottom: -1px;
 }
 
 .ouverture-bas {
-  bottom: 0;
-  display: flex;
   align-items: flex-start;
-  justify-content: center;
 }
 
 .ouverture-racine[data-sortie="true"] .ouverture-haut {
@@ -435,7 +437,7 @@ body {
 .ouverture-marc,
 .ouverture-adou {
   font-family: var(--font-serif), Georgia, serif;
-  font-size: clamp(3.15rem, 16vw, 8.25rem);
+  font-size: clamp(2.75rem, 15vw, 8.25rem);
   font-weight: 500;
   line-height: 0.82;
   letter-spacing: -0.045em;
@@ -475,8 +477,8 @@ body {
 
 .ouverture-passer {
   position: absolute;
-  right: 1.25rem;
-  bottom: 1.2rem;
+  right: max(1.25rem, env(safe-area-inset-right));
+  bottom: max(1.2rem, env(safe-area-inset-bottom));
   z-index: 3;
   border: 0;
   background: transparent;

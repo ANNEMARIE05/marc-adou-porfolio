@@ -12,11 +12,19 @@ export function Ouverture() {
   const [present, setPresent] = useState(true);
   const [sortie, setSortie] = useState(false);
   const passer = useRef<() => void>(() => {});
+  const racine = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const root = document.documentElement;
     const reduit = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     let timers: number[] = [];
+
+    const relancer = () => {
+      racine.current?.getAnimations({ subtree: true }).forEach((animation) => {
+        animation.currentTime = 0;
+        if (animation.playState !== "running") animation.play();
+      });
+    };
 
     const cibles = () => document.querySelectorAll<HTMLElement>(SELECTEUR);
 
@@ -30,6 +38,9 @@ export function Ouverture() {
       setPresent(false);
       return;
     }
+
+    relancer();
+    const image = window.requestAnimationFrame(relancer);
 
     root.classList.add("verrouille");
     cibles().forEach((noeud) => noeud.setAttribute("inert", ""));
@@ -73,6 +84,7 @@ export function Ouverture() {
 
     window.addEventListener("keydown", surEchap);
     return () => {
+      window.cancelAnimationFrame(image);
       timers.forEach((id) => window.clearTimeout(id));
       window.removeEventListener("keydown", surEchap);
       liberer();
@@ -85,7 +97,7 @@ export function Ouverture() {
   const nom = reste.join(" ");
 
   return (
-    <div className="ouverture-racine no-print" data-sortie={sortie ? "true" : "false"}>
+    <div ref={racine} className="ouverture-racine no-print" data-sortie={sortie ? "true" : "false"}>
       <div className="ouverture-haut" aria-hidden="true">
         <div className="ouverture-bloc ouverture-bloc-haut">
           <p className="ouverture-kicker">{profil.role}</p>
