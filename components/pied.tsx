@@ -1,49 +1,14 @@
-import Link from "next/link";
-import { Reveler } from "@/components/reveler";
 import { profil } from "@/lib/contenu";
 
 export function Pied() {
   return (
     <footer className="border-t border-ligne">
-      <Reveler className="mx-auto grid max-w-6xl gap-6 px-5 py-10 sm:grid-cols-[1.3fr_1fr] sm:items-end sm:gap-8 sm:px-6 sm:py-12">
-        <div>
-          <p className="font-serif text-2xl font-medium leading-tight tracking-tight sm:text-4xl">{profil.nom}</p>
-          <p className="mt-2 text-sm text-douce">{profil.role}</p>
-        </div>
-        <nav aria-label="Pied de page" className="flex flex-wrap gap-x-6 gap-y-2 text-sm">
-          <Link href="/" className="lien-nav text-douce hover:text-encre">
-            Accueil
-          </Link>
-          <Link href="/projets" className="lien-nav text-douce hover:text-encre">
-            Projets
-          </Link>
-          <Link href="/parcours" className="lien-nav text-douce hover:text-encre">
-            Parcours
-          </Link>
-          <a
-            href={profil.cv}
-            target="_blank"
-            rel="noreferrer"
-            className="lien-nav text-douce hover:text-encre"
-          >
-            CV
-          </a>
-          <Link href="/contact" className="lien-nav text-douce hover:text-encre">
-            Contact
-          </Link>
-          <a
-            href={profil.linkedin}
-            target="_blank"
-            rel="noreferrer"
-            className="lien-nav text-douce hover:text-encre"
-          >
-            LinkedIn
-          </a>
-          <a href={`mailto:${profil.email}`} className="lien-nav text-douce hover:text-encre">
-            {profil.email}
-          </a>
-        </nav>
-      </Reveler>
+      <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-x-5 gap-y-1 py-5 pl-5 pr-16 text-sm text-douce sm:pl-6 sm:pr-20">
+        <p>© {new Date().getFullYear()} {profil.nom}</p>
+        <a href={`mailto:${profil.email}`} className="lien-nav hover:text-encre">
+          {profil.email}
+        </a>
+      </div>
     </footer>
   );
 }

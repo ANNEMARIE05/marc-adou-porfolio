@@ -9,15 +9,15 @@ import { profil, projets } from "@/lib/contenu";
 export default function Page() {
   return (
     <>
-      <section className="mx-auto grid max-w-6xl grid-cols-[6.25rem_minmax(0,1fr)] items-center gap-x-3.5 gap-y-5 px-5 pb-4 pt-6 min-[400px]:grid-cols-[7.25rem_minmax(0,1fr)] min-[400px]:gap-x-4 sm:grid-cols-[minmax(0,0.88fr)_minmax(0,1.12fr)] sm:gap-x-14 sm:px-6 sm:pt-12 lg:gap-x-16">
-        <figure className="entrer-photo sm:row-span-2 sm:self-center">
-          <div className="cadre relative aspect-[3/4] w-full overflow-hidden bg-sable">
+      <section className="mx-auto grid max-w-6xl grid-cols-1 items-start gap-y-3 px-5 pb-4 pt-6 sm:grid-cols-[minmax(0,0.88fr)_minmax(0,1.12fr)] sm:items-center sm:gap-x-14 sm:px-6 sm:pt-12 lg:gap-x-16">
+        <figure className="entrer-photo mx-auto w-full sm:row-span-2 sm:mx-0 sm:w-full sm:self-center">
+          <div className="cadre relative aspect-square w-full overflow-hidden bg-sable sm:aspect-[3/4]">
             <Image
               src={profil.portrait}
               alt={profil.altPortrait}
               fill
               priority
-              sizes="(min-width: 640px) 40vw, 8rem"
+              sizes="(min-width: 640px) 40vw, 100vw"
               className="object-cover object-center"
             />
           </div>
@@ -45,7 +45,7 @@ export default function Page() {
           </p>
         </div>
 
-        <div className="col-span-2 sm:col-span-1">
+        <div>
           <p className="entrer mb-3 text-[0.65rem] uppercase tracking-[0.14em] text-douce sm:hidden">
             {profil.pratiques.join("   ·   ")}
           </p>
@@ -132,7 +132,7 @@ export default function Page() {
               </Link>
             </div>
           </Reveler>
-          <div className="mt-7 grid grid-cols-2 gap-x-3 gap-y-8 sm:mt-12 sm:gap-x-8 sm:gap-y-14">
+          <div className="mt-7 grid grid-cols-1 gap-y-8 sm:mt-12 sm:grid-cols-2 sm:gap-x-8 sm:gap-y-14">
             {projets.slice(0, 4).map((projet, index) => (
               <Reveler key={projet.slug} delay={(index % 2) * 90} className="h-full">
                 <CarteProjet projet={projet} index={index} priorite={index < 2} />

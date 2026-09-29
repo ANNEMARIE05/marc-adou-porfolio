@@ -104,7 +104,7 @@ export default function Page() {
                 {experience.titre}. {experience.texte}
               </p>
             </Reveler>
-            <div className="mt-6 grid grid-cols-2 gap-x-3 gap-y-8 sm:gap-x-8 sm:gap-y-12">
+            <div className="mt-6 grid grid-cols-1 gap-y-8 sm:grid-cols-2 sm:gap-x-8 sm:gap-y-12">
               {projetsDe(experience.structure).map((projet) => (
                 <Reveler key={projet.slug} className="h-full">
                   <CarteProjet
