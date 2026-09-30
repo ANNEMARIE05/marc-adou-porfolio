@@ -45,7 +45,7 @@ export const profil = {
   instagramNom: "@marcadou225",
   cv: "/documents/CV-Marc-Adou.pdf",
   accroche: "Des interfaces qui simplifient des parcours complexes.",
-  bio: "Product designer UX/UI, spécialisé dans la fintech. Il conçoit des interfaces pour les paiements, l’onboarding et la gestion de compte, là où la réglementation et la confiance pèsent autant que le geste.",
+  bio: "Product designer UX/UI, spécialisé dans la fintech. Je conçois des interfaces pour les paiements, l’onboarding et la gestion de compte, là où la réglementation et la confiance pèsent autant que le geste.",
   chiffres: [
     { valeur: "2022", detail: "à aujourd’hui, senior chez NGSER" },
     { valeur: "2020", detail: "à 2022, UX designer chez VEONE" },
@@ -57,7 +57,7 @@ export const profil = {
   invitationTexte:
     "Paiement, onboarding, gestion de compte. Un message suffit : le contexte, et ce que l’interface doit rendre plus clair.",
   disponibilite:
-    "Conception d’interfaces web et mobile, de l’analyse des besoins à la validation. Il répond en personne.",
+    "Conception d’interfaces web et mobile, de l’analyse des besoins à la validation. Je réponds en personne.",
   introParcours:
     "Depuis 2022, et encore aujourd’hui, senior UX designer chez NGSER. Avant cela, VEONE, puis AFINOV : des produits web et mobile, de la fintech au service public, à la santé et au tourisme.",
   introCv:
@@ -158,10 +158,22 @@ export const projets: Projet[] = [
     alt: "Clé noire et badge d’acier sur un bureau sombre.",
   },
   {
-    slug: "islam-paymoney",
-    nom: "Islam+ / Paymoney",
+    slug: "islam-plus",
+    nom: "Islam+",
     ligne:
-      "Conception et refonte de parcours web & mobile, intégrant les retours utilisateurs.",
+      "Conception et refonte des parcours web et mobile d’Islam+, en intégrant les retours utilisateurs.",
+    structure: "NGSER",
+    periode: "2022 — aujourd’hui",
+    secteur: "Paiement",
+    support: "Web et mobile",
+    image: "/images/projets/islam-paymoney.png",
+    alt: "Téléphone retourné et pièces sur un linge sombre.",
+  },
+  {
+    slug: "paymoney",
+    nom: "Paymoney",
+    ligne:
+      "Conception et refonte des parcours web et mobile de Paymoney, en intégrant les retours utilisateurs.",
     structure: "NGSER",
     periode: "2022 — aujourd’hui",
     secteur: "Paiement",
@@ -194,10 +206,21 @@ export const projets: Projet[] = [
     alt: "Carnet ouvert et crayon sur une table en chêne.",
   },
   {
-    slug: "gateway-mtn-drive",
-    nom: "Gateway / MTN Drive",
+    slug: "gateway",
+    nom: "Gateway",
     ligne:
-      "Conception et refonte d’interfaces et de parcours digitaux à partir des besoins métier et retours utilisateurs.",
+      "Conception et refonte des interfaces et parcours de Gateway, à partir des besoins métier et des retours utilisateurs.",
+    structure: "VEONE",
+    periode: "2020 — 2022",
+    secteur: "Télécom",
+    image: "/images/projets/gateway-mtn.png",
+    alt: "Clé de voiture et téléphone sur une pierre noire.",
+  },
+  {
+    slug: "mtn-drive",
+    nom: "MTN Drive",
+    ligne:
+      "Conception et refonte des interfaces et parcours de MTN Drive, à partir des besoins métier et des retours utilisateurs.",
     structure: "VEONE",
     periode: "2020 — 2022",
     secteur: "Télécom",

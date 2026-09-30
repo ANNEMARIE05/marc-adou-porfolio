@@ -5,7 +5,7 @@ import { CarteProjet } from "@/components/carte-projet";
 import { Reveler } from "@/components/reveler";
 import { profil, projets, projetsDe } from "@/lib/contenu";
 
-const apercu = ["islam-paymoney", "gna-assurance", "maruvi"].flatMap((slug) => {
+const apercu = ["islam-plus", "paymoney", "gna-assurance"].flatMap((slug) => {
   const projet = projets.find((item) => item.slug === slug);
   return projet ? [projet] : [];
 });
@@ -13,7 +13,7 @@ const apercu = ["islam-paymoney", "gna-assurance", "maruvi"].flatMap((slug) => {
 export const metadata: Metadata = {
   title: "Projets",
   description:
-    `Projets de ${profil.nom} : GNA Assurance, Paymoney, CI-PME et MediClick.`,
+    `Projets de ${profil.nom} : Islam+, Paymoney, Gateway et MTN Drive.`,
 };
 
 export default function Page() {
